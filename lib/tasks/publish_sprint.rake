@@ -81,6 +81,7 @@ task :publish_sprint, [:sprint_number] do |_task, args|
   print "Enter the recording link: "
   recording = STDIN.gets.chomp
   puts
+  puts
 
   puts <<~EOS
     Upload the slide deck to SlideShare (https://slideshare.net):
@@ -96,6 +97,15 @@ task :publish_sprint, [:sprint_number] do |_task, args|
   print "Enter the slides link: "
   slides = STDIN.gets.chomp
   puts
+  puts
+
+  puts <<~EOS
+    Announce the Sprint:
+
+    :manageiq:  ManageIQ Sprint #{sprint_number} Review
+    :youtube:  Recording: #{recording}
+    :slideshare:  Slides: #{slides}
+  EOS
 
   SprintDetails.new(sprint_number, recording, slides).run
 end
